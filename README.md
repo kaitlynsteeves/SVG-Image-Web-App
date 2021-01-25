@@ -1,23 +1,24 @@
-SVG Image Web Application by Kaitlyn Steeves
+<h1>SVG Image Web Application</h1>
+<h4>By Kaitlyn Steeves</h4>
 
 This application parses uploaded SVG images. It allows the user to view information about the file and information about the elements within the file. 
 The application also allows the user to create new SVG images, as well as edit existing ones.
 
-Terminal instructions:
+<h4>Terminal instructions:</h4>
 $ cd parser
 $ make
 $ cd -
 $ npm install
 $ npm run dev PORT
 
-Website instructions:
-CONSOLE LOG PANEL
+<h4>Website instructions:</h4>
+<h5>CONSOLE LOG PANEL</h5>
 Uploading a file:
 	Press 'select file', select your file, and then press upload. The site will refresh and your new svg file will be there.
 Creating a new file:
 	Press 'create new' and fill in the fields on the popup. Then press submit.
 
-SVG VIEW PANEL
+<h5>SVG VIEW PANEL</h5>
 Selecting an image:
 	Use dropdown menu to select.
 View a component's other attributes:
@@ -25,7 +26,7 @@ View a component's other attributes:
 Add a rectangle/circle:
 	Press 'add ____' and fill in the fields on the popup. Then press submit.
 
-ATTRIBUTE VIEW PANEL
+<h5>ATTRIBUTE VIEW PANEL</h5>
 Add attributes:
 	Press 'Add/Edit' and fill in the fields on the popup. 
 Edit attributes:
