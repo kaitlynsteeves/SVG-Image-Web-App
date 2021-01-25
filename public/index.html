@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SVG App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="App for SVG files">
+    <meta name="keywords" content="SVG">
+    <meta name="author" content="Kaitlyn Steeves">
+    <!-- Load jquery, bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <!-- Custom CSS End -->
+</head>
+
+<body>
+    <!--------------------- HEADER --------------------->
+    <section>
+        <script>document.body.className += ' fade-out';</script>
+        <div class="wrapper">
+         <h1 class="mega montserrat regular double-header-line">SVG App</h1>
+            <p class="zeta oswald regular uppercase ls-large">CIS2750 Assignment 3</p>
+        </div>
+    </section>
+  
+
+    <!--------------------- CONSOLE LOG PANEL --------------------->
+
+    <div style = "transform: translateX(15%)">
+        <h1 class="mid montserrat regular" >Console Log Panel</h1>
+    </div>
+
+    <div id = "div0" style="overflow:auto; width: 70%; margin-left: auto; margin-right: auto;">
+        <table id="fileTable" style= "width: 100%"> 
+            <thead>
+                <th>Image<br>(Click to download)</th>
+                <th>File Name<br>(Click to download)</th>
+                <th>File Size</th>
+                <th>Number of Rectangles</th>
+                <th>Number of Circles</th>
+                <th>Number of Paths</th>
+                <th>Number of Groups</th>
+            </thead>
+        </table>
+    </div>
+    <p></p>
+
+    
+    <!--------------------- BUTTONS --------------------->
+
+    <div style = "transform: translateX(63%)">
+        <label id = "addImage" class="w3-button w3-white w3-border w3-round-large w3-small"> 
+            Create New
+            <button hidden = hidden></button>
+        </label>
+        <form action="/upload" method="POST" enctype="multipart/form-data" style = "display: inline">
+            <label class="w3-button w3-white w3-border w3-round-large w3-small">
+                Select File
+                <input type='file' name="uploadFile" accept=".svg" hidden = hidden>
+            </label>
+            <label class="w3-button w3-white w3-border w3-round-large w3-small">
+                Upload
+                <input type='submit' class="btn btn-secondary" hidden = hidden>
+            </label> 
+        </form>   
+    </div>
+    <p><br></p>
+
+
+    <!--------------------- SVG VIEW PANEL --------------------->
+    
+    <div style = "transform: translateX(15%)">
+        <p class="mid montserrat regular" >SVG View Panel</p>
+    </div>
+    <div style = "transform: translateX(15%)">
+        <label for="images" style="color: white;">Select an Image: </label>
+        <select id="images">
+            <option value="" disabled selected hidden></option>
+        </select>
+    </div>
+    
+    <div id = div1 style="overflow:auto; height:auto;  width: 70%; margin-left: auto; margin-right: auto;">
+        <table id = "t1" style="width: 100%;">
+            <thead>
+                <th>Image (Click to download)</th>
+            </thead>
+        </table>
+    
+        <table id = "t2" style="width: 100%;">
+            <thead>
+                <th>Title</th>
+                <th>Description</th>
+            </thead>
+        </table>
+    
+        <table id = "t3" style="width: 100%;">
+            <thead>
+                <th>Component</th>
+                <th>Summary</th>
+                <th>Other Attributes</th>
+            </thead>
+        </table>
+    </div>
+
+
+    <!--------------------- BUTTONS --------------------->
+
+    <div style = "transform: translateX(68%)">
+        <p></p>
+        <label id = "addRect" class="w3-button w3-white w3-border w3-round-large w3-small"> 
+            Add Rectangle
+            <button hidden = hidden></button>
+        </label>
+        <label id = "addCircle" class="w3-button w3-white w3-border w3-round-large w3-small"> 
+            Add Circle
+            <button hidden = hidden></button>
+        </label>
+    </div>
+    <p><br></p>
+
+
+    <!--------------------- ATTRIBUTE VIEW PANEL --------------------->
+
+    <div style = "transform: translateX(15%)">
+        <h1 class="mid montserrat regular" style= "transform: translateY(80%)">Attribute View Panel</h1>
+        <p>Select a component from the SVG Image to view</p>
+    </div>
+    <table id = "t4" style= "width: 70%; margin-left: auto; margin-right: auto;">
+        <thead>
+            <th>Element</th>
+        </thead>
+    </table>
+    <table id = "t5" style= "width: 70%; margin-left: auto; margin-right: auto;">
+        <thead>
+            <th>Attribute</th>
+            <th>Name</th>
+            <th>Value</th>
+        </thead>
+    </table>
+
+
+    <!--------------------- BUTTONS --------------------->
+
+    <div style = "transform: translateX(78%)">
+        <p></p>
+        <label id = "addAttr" class="w3-button w3-white w3-border w3-round-large w3-small"> 
+            Add/Edit
+            <button hidden = hidden></button>
+        </label>
+    </div>
+
+    <div align = "center">
+        <p class="zeta oswald regular uppercase ls-large"><br>Kaitlyn Steeves</p>
+    </div>
+
+
+
+    <!--------------------- POPUPS --------------------->
+
+    <div class="form-popup" id="imageForm">
+        <form action="" class="form-container">
+          <label><b>File Name</b></label>
+          <input id = "fileName" type="text" placeholder="Enter File Name" name = "filename" required/>
+      
+          <label><b>Title</b></label>
+          <input id = "svgTitle" type="text" placeholder="Enter Title">
+
+          <label><b>Description</b></label>
+          <input id = "svgDescription" type="text" placeholder="Enter Description">
+      
+          <button id = "addFile" type='button' class="btn">Submit</button>
+          <button id = "closeFile" type='button' class="btn cancel">Cancel</button>
+        </form>
+      </div>
+
+      <div class="form-popup" id="rectForm">
+        <form action="" class="form-container">
+
+          <label><b>X</b></label>
+          <input id = "rectX" type="text" placeholder="Enter X value" required>
+      
+          <label><b>Y</b></label>
+          <input id = "rectY" type="text" placeholder="Enter Y value">
+
+          <label><b>Width</b></label>
+          <input id = "rectW" type="text" placeholder="Enter width">
+
+          <label><b>Height</b></label>
+          <input id = "rectH" type="text" placeholder="Enter Height">
+
+          <label><b>Units</b></label>
+          <input id = "rectU" type="text" placeholder="Enter Units">
+      
+          <button id = "subRect" type='button' class="btn">Submit</button>
+          <button id = "closeRect" type='button' class="btn cancel">Cancel</button>
+        </form>
+      </div>
+
+      <div class="form-popup" id="circleForm">
+        <form action="" class="form-container">
+      
+          <label><b>CX</b></label>
+          <input id = "circleCX" type="text" placeholder="Enter CX value">
+
+          <label><b>CY</b></label>
+          <input id = "circleCY" type="text" placeholder="Enter CY value">
+
+          <label><b>Radius</b></label>
+          <input id = "circleR" type="text" placeholder="Enter Radius">
+
+          <label><b>Units</b></label>
+          <input id = "circleU" type="text" placeholder="Enter Units">
+      
+          <button id = "subCircle" type='button' class="btn">Submit</button>
+          <button id = "closeCircle" type='button' class="btn cancel">Cancel</button>
+        </form>
+      </div>
+
+      <div class="form-popup" id="attrForm">
+        <form action="" class="form-container">
+
+          <label><b>Attribute Name</b></label>
+          <input id = "name" type="text" placeholder="Enter Name">
+      
+          <label><b>Attribute Value</b></label>
+          <input id = "val" type="text" placeholder="Enter Value">
+      
+          <button id = "add" type='button' class="btn">Submit</button>
+          <button id = "close" type='button' class="btn cancel">Cancel</button>
+        </form>
+      </div>
+
+    
+    <!-- Leave me at the bottom of body -->
+    <script src="/index.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
