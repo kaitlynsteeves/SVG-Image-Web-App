@@ -1,4 +1,7 @@
-Kaitlyn Steeves
+SVG Image Web Application by Kaitlyn Steeves
+
+This application parses uploaded SVG images. It allows the user to view information about the file and information about the elements within the file. 
+The application also allows the user to create new SVG images, as well as edit existing ones.
 
 Terminal instructions:
 $ cd parser
